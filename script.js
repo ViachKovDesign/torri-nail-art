@@ -165,6 +165,7 @@
   });
   scene.addEventListener('pointermove', e => {
     if (!drag) return;
+    if (e.buttons === 0) { end(); return; }
     const dx = e.clientX - drag.x;
     if (!drag.moved && Math.abs(dx) > 5) { drag.moved = dragged = true; scene.setPointerCapture(drag.id); scene.classList.add('is-dragging'); }
     if (drag.moved) scene.scrollLeft = drag.s - dx;
